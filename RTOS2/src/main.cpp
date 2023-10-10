@@ -1,25 +1,17 @@
 #include <Arduino.h>
-int zakasni = 50, stevec = 10;
+int staro_stanje;
 void setup()
 {
+  pinMode(A1, INPUT);
   pinMode(10, OUTPUT);
-  pinMode(11, OUTPUT);
-  pinMode(12, OUTPUT);
-  pinMode(13, OUTPUT);
 }
 
 void loop()
 {
-  for (stevec = 10; stevec <= 13; stevec++)
+  int stanje = digitalRead(A1);
+  if (staro_stanje == 1 && stanje == 0)
   {
-    digitalWrite(stevec, LOW);
-    delay(zakasni);
-    digitalWrite(stevec, HIGH);
+    digitalWrite(10, !digitalRead(10));
   }
-  for (stevec = 13; stevec >= 10; stevec--)
-  {
-    digitalWrite(stevec, LOW);
-    delay(zakasni);
-    digitalWrite(stevec, HIGH);
-  }
+  staro_stanje = stanje;
 }
