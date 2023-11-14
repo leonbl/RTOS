@@ -2,6 +2,10 @@
 #include <STM32FreeRTOS.h>
 
 uint32_t stevec = 0; 
+void nitLed1(void *args);
+void nitLed2(void *args);
+void nitLed3(void *args);
+void nitSerijski(void *args);
 
 void setup()
 {
