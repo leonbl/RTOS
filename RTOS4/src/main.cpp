@@ -64,6 +64,12 @@ void nitSerijski(void *args)
   {
     vTaskDelay(500 / portTICK_PERIOD_MS);
     Serial.print(uxTaskGetStackHighWaterMark(led1_h));
+    Serial.print(" ");
+    Serial.print(uxTaskGetStackHighWaterMark(led2_h));
+    Serial.print(" ");
+    Serial.print(uxTaskGetStackHighWaterMark(led3_h));
+    Serial.print(" ");
+    Serial.println(uxTaskGetStackHighWaterMark(0));
   }
 }
 
