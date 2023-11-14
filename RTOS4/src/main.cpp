@@ -18,9 +18,9 @@ void setup()
   pinMode(13, OUTPUT);
   pinMode(11, OUTPUT);
   Serial.begin(9600);
-  xTaskCreate(nitLed1, NULL, 256, NULL, 1, &led1_h);
-  xTaskCreate(nitLed2, NULL, 256, NULL, 1, &led2_h);
-  xTaskCreate(nitLed3, NULL, 256, NULL, 1, &led3_h);
+  xTaskCreate(nitLed1, NULL, 256, NULL, 2, &led1_h);
+  xTaskCreate(nitLed2, NULL, 256, NULL, 2, &led2_h);
+  xTaskCreate(nitLed3, NULL, 256, NULL, 2, &led3_h);
   xTaskCreate(nitSerijski, NULL, 256, NULL, 1, &ser_h);
   vTaskStartScheduler();
 }
@@ -30,9 +30,9 @@ void nitLed1(void *pvParameters)
   while (1)
   {
     digitalWrite(11, HIGH);
-    vTaskDelay(600 / portTICK_PERIOD_MS);
+   // vTaskDelay(600 / portTICK_PERIOD_MS);
     digitalWrite(11, LOW);
-    vTaskDelay(600 / portTICK_PERIOD_MS);
+    //vTaskDelay(600 / portTICK_PERIOD_MS);
   }
 }
 
