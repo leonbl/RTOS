@@ -20,7 +20,6 @@ void loop()
     digitalWrite(lucka, LOW);
     digitalWrite(lucka-1, HIGH);
     if(lucka>=13) lucka=9;
-
   }
   delay(100);
   staro_stanje = stanje;
