@@ -12,6 +12,12 @@ void vklopiLed(int n){
   digitalWrite(n, HIGH);
 }
 
+void ugasniLed(){
+  digitalWrite(13, LOW);
+  digitalWrite(12, LOW);
+}
+
+
 void setup() {
   pinMode(13, OUTPUT);
   pinMode(12, OUTPUT);
@@ -27,6 +33,7 @@ void setup() {
 }
 
 void loop() {
+  ugasniLed();
 }
 
 void tA(void *pvParameters){
@@ -40,7 +47,6 @@ void tA(void *pvParameters){
         delay(1000);
         xSemaphoreGive(sem2);
       }
-      
     }
   }
 }
