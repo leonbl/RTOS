@@ -18,9 +18,9 @@ void setup()
   pinMode(13, OUTPUT);
   pinMode(11, OUTPUT);
   Serial.begin(9600);
-  xTaskCreate(nitLed1, NULL, 256, NULL, 2, &led1_h);
-  xTaskCreate(nitLed2, NULL, 256, NULL, 2, &led2_h);
-  xTaskCreate(nitLed3, NULL, 256, NULL, 2, &led3_h);
+  xTaskCreate(nitLed1, NULL, 256, NULL, 1, &led1_h);
+  xTaskCreate(nitLed2, NULL, 256, NULL, 1, &led2_h);
+  xTaskCreate(nitLed3, NULL, 256, NULL, 1, &led3_h);
   xTaskCreate(nitSerijski, NULL, 256, NULL, 1, &ser_h);
   vTaskStartScheduler();
 }
@@ -62,6 +62,7 @@ void nitSerijski(void *args)
 {
   while (1)
   {
+    stevec++;
     vTaskDelay(500 / portTICK_PERIOD_MS);
     Serial.print(uxTaskGetStackHighWaterMark(led1_h));
     Serial.print(" ");
