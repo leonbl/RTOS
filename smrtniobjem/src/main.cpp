@@ -33,7 +33,6 @@ void setup() {
 }
 
 void loop() {
-  ugasniLed();
 }
 
 void tA(void *pvParameters){
@@ -41,10 +40,10 @@ void tA(void *pvParameters){
     if(xSemaphoreTake(sem1, 10)==pdTRUE){
       xSemaphoreGive(sem1);
       vklopiLed(12);
-      vTaskDelay(1000);
+      vTaskDelay(200);
       if(xSemaphoreTake(sem2, 10)==pdTRUE){
         Serial.println("task A");
-        delay(1000);
+        delay(200);
         xSemaphoreGive(sem2);
       }
     }
@@ -56,10 +55,10 @@ void tB(void *pvParameters){
     if(xSemaphoreTake(sem2, 10)==pdTRUE){
       xSemaphoreGive(sem2);
       vklopiLed(13);
-      vTaskDelay(1000);
+      vTaskDelay(200);
       if(xSemaphoreTake(sem1, 10)==pdTRUE){
         Serial.println("task B");
-        delay(1000);
+        delay(200);
         xSemaphoreGive(sem1);
       }
     }
